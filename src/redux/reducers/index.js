@@ -1,42 +1,16 @@
-import {
-  SWITCH_LANG,
-  SEARCH_FETCH_LIST,
-  SEARCH_DEL_ITEM,
-  SEARCH_SET_CURRENT_PAGE,
-  SEARCH_SET_ROWS_PER_PAGE,
-  MODAL_WIKI_SHOW,
-  MODAL_WIKI_HIDE
-} from "../types";
+import * as TYPE from "../types";
+import { initialState } from '../state';
 
-const initialState = {
-  lang: "ru",
-  search: {
-    list: [],
-    count: 0,
-    rowsPerPage: 5,
-    currentPage: 0
-  },
-  modalWikiPreview: {
-    open: false,
-    pageid: 0
-  }
-};
 
-const allowLangList = ["ru", "en"];
-
-export default function appReducer(state = initialState, action) {
+export default function appReducer(state, action) {
   switch (action.type) {
-    case SWITCH_LANG: {
-      if (!allowLangList.includes(action.payload.lang)) return state;
-      if (action.payload.wiki) {
-        action.payload.wiki.lang = action.payload.lang;
-      }
+    case TYPE.SWITCH_LANG: {
       return {
         ...state,
         lang: action.payload.lang
       };
     }
-    case SEARCH_FETCH_LIST: {
+    case TYPE.SEARCH_FETCH_LIST_OK: {
       const { list, count } = action.payload;
       const search = { ...state.search, list, count };
       return {
@@ -44,21 +18,21 @@ export default function appReducer(state = initialState, action) {
         search
       };
     }
-    case SEARCH_SET_CURRENT_PAGE: {
+    case TYPE.SEARCH_SET_CURRENT_PAGE: {
       const search = { ...state.search, currentPage: action.payload };
       return {
         ...state,
         search
       };
     }
-    case SEARCH_SET_ROWS_PER_PAGE: {
+    case TYPE.SEARCH_SET_ROWS_PER_PAGE: {
       const search = { ...state.search, rowsPerPage: action.payload };
       return {
         ...state,
         search
       };
     }
-    case SEARCH_DEL_ITEM: {
+    case TYPE.SEARCH_DEL_ITEM: {
       const list = state.search.list.filter(
         (item) => item.pageid !== action.payload
       );
@@ -68,7 +42,7 @@ export default function appReducer(state = initialState, action) {
         search
       };
     }
-    case MODAL_WIKI_SHOW: {
+    case TYPE.MODAL_WIKI_SHOW: {
       return {
         ...state,
         modalWikiPreview: {
@@ -77,7 +51,7 @@ export default function appReducer(state = initialState, action) {
         }
       };
     }
-    case MODAL_WIKI_HIDE: {
+    case TYPE.MODAL_WIKI_HIDE: {
       return {
         ...state,
         modalWikiPreview: { ...initialState.modalWikiPreview }

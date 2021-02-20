@@ -41,7 +41,7 @@ const Page = ({
 
 const mapStateToProps = (state) => {
   return {
-    count: state.search.count,
+    count: state.search.count || 0,
     rowsPerPage: state.search.rowsPerPage,
     currentPage: state.search.currentPage
   };

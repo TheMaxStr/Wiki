@@ -1,9 +1,12 @@
 import { applyMiddleware, compose, createStore } from "redux";
-import thunkMiddleware from "redux-thunk";
+import createSagaMiddleware from 'redux-saga';
 import rootReducer from "./reducers";
+import rootSaga from './saga';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(preloadedState) {
-  const middlewares = [thunkMiddleware];
+  const middlewares = [sagaMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
   const enhancers = [
@@ -16,6 +19,7 @@ export default function configureStore(preloadedState) {
     : preloadedState;
 
   const store = createStore(rootReducer, persistedState, composedEnhancers);
+  sagaMiddleware.run(rootSaga);
 
   store.subscribe(() => {
     localStorage.setItem("reduxState", JSON.stringify(store.getState()));

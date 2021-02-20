@@ -1,8 +1,10 @@
 // APP
 export const SWITCH_LANG = "app/switchLang";
+export const SET_LANG_STORE = "app/setStoreLang";
 
 // SEARCH
 export const SEARCH_FETCH_LIST = "search/fetchList";
+export const SEARCH_FETCH_LIST_OK = "search/addWikiList";
 export const SEARCH_SET_CURRENT_PAGE = "search/setCurrentPage";
 export const SEARCH_SET_ROWS_PER_PAGE = "search/setRowsPerPage";
 export const SEARCH_DEL_ITEM = "search/delItem";

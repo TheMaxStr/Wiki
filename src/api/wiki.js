@@ -1,4 +1,5 @@
 const WikiApi = {
+  allowLangList: ["ru", "en"],
   lang: "ru",
   getBaseUrl() {
     return `https://${this.lang}.wikipedia.org/w/api.php`;

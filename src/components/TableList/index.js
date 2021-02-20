@@ -50,8 +50,8 @@ const TableList = ({ rows, counts }) => {
 
 const mapStateToProps = (state) => {
   return {
-    rows: state.search.list,
-    counts: state.search.count
+    rows: state.search.list || [],
+    counts: state.search.count || 0
   };
 };
 
