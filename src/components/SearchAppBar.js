@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import useDebounce from "../hooks/useDebounce";
-import { fetchList } from "../redux/actions";
+import { fetchListEvent } from "../redux/actions";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SearchAppBar = ({ currentPage, rowsPerPage, lang, fetchList }) => {
+const SearchAppBar = ({ currentPage, rowsPerPage, lang, fetchListEvent }) => {
   const classes = useStyles();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -65,8 +65,8 @@ const SearchAppBar = ({ currentPage, rowsPerPage, lang, fetchList }) => {
   };
 
   useEffect(() => {
-    fetchList(debouncedSearchQuery);
-  }, [fetchList, debouncedSearchQuery, currentPage, rowsPerPage, lang]);
+    fetchListEvent(debouncedSearchQuery);
+  }, [fetchListEvent, debouncedSearchQuery, currentPage, rowsPerPage, lang]);
 
   return (
     <div className={classes.root}>
@@ -100,12 +100,12 @@ const mapStateToProps = (state) => {
   return {
     currentPage: state.search.currentPage,
     rowsPerPage: state.search.rowsPerPage,
-    lang: state.lang
+    lang: state.app.lang
   };
 };
 
 const mapDispatchToProps = {
-  fetchList
+  fetchListEvent
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchAppBar);

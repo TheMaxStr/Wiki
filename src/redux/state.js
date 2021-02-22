@@ -1,14 +1,16 @@
-
 export const initialState = {
-  lang: "ru",
+  app: {
+    lang: "ru",
+    modalWikiPreview: {
+      open: false,
+      pageid: 0,
+    },
+  },
   search: {
+    loading: false,
     list: [],
     count: 0,
     rowsPerPage: 5,
-    currentPage: 0
+    currentPage: 0,
   },
-  modalWikiPreview: {
-    open: false,
-    pageid: 0
-  }
 };

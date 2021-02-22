@@ -53,7 +53,7 @@ const WikiModal = ({ pageid, open, hideModalWikiPreview }) => {
 
 const mapStateToProps = (state) => {
   return {
-    ...state.modalWikiPreview
+    ...state.app.modalWikiPreview
   };
 };
 

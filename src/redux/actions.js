@@ -8,16 +8,16 @@ export const addListWiki = (data) => ({
   }
 });
 
-export const fetchList = (query = "") => {
-  return { type: TYPE.SEARCH_FETCH_LIST, payload: query };
+export const fetchListEvent = (query = "") => {
+  return { type: TYPE.EVENT_SEARCH_FETCH_LIST, payload: query };
 };
 
 export const delSearchItem = (pageid) => {
   return { type: TYPE.SEARCH_DEL_ITEM, payload: pageid };
 };
 
-export const switchLang = (lang) => {
-  return { type: TYPE.SWITCH_LANG, payload: { lang } };
+export const switchLangEvent = (lang) => {
+  return { type: TYPE.EVENT_SWITCH_LANG, payload: { lang } };
 };
 
 export const setStoreLang = (lang) => {
@@ -26,6 +26,10 @@ export const setStoreLang = (lang) => {
 
 export const setCurrentPage = (page) => {
   return { type: TYPE.SEARCH_SET_CURRENT_PAGE, payload: page };
+};
+
+export const setSearchLoad = (status) => {
+  return { type: TYPE.SEARCH_SET_LOADING, payload: status };
 };
 
 export const setRowsPerPage = (perPage) => {

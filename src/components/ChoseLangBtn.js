@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { switchLang } from "../redux/actions";
+import { switchLangEvent } from "../redux/actions";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ChoseLangBtn = ({ switchLang, lang }) => {
+const ChoseLangBtn = ({ switchLangEvent, lang }) => {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    switchLang(event.target.value);
+    switchLangEvent(event.target.value);
   };
 
   return (
@@ -53,12 +53,12 @@ const ChoseLangBtn = ({ switchLang, lang }) => {
 
 const mapStateToProps = (state) => {
   return {
-    lang: state.lang
+    lang: state.app.lang
   };
 };
 
 const mapDispatchToProps = {
-  switchLang
+  switchLangEvent
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChoseLangBtn);
