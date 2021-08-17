@@ -26,7 +26,7 @@ export default (state = initStateSearch, action) => {
       };
     }
     case TYPE.SEARCH_DEL_ITEM: {
-      const list = state.search.list.filter(
+      const list = state.list.filter(
         (item) => item.pageid !== action.payload
       );
       return {

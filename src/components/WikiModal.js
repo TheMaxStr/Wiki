@@ -9,7 +9,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Wiki from "../api/wiki";
 
-const WikiModal = ({ pageid, open, hideModalWikiPreview }) => {
+const WikiModal = ({ pageid = 0, open = false, hideModalWikiPreview }) => {
   const [title, setTitle] = React.useState("");
   const [bodyContent, setBodyContent] = React.useState("");
 
